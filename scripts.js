@@ -151,7 +151,7 @@ function  cube (value) {
 }
 console.log( cube(2) );
 
-// С помощью рекурсии:
+// С помощью рекурсии: не получилось... понимаю, что куб это число умноженное на квадрат, но как-то...
 function  cube (value) {
     if (value === 1) {
         return value;
