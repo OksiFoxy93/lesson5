@@ -57,33 +57,27 @@ var current = counter.inc().inc().dec().inc().dec().getValue();
 alert(current);
 
 // 4
-let calculator = {
-    sum(x, y) {
-        return x + y;
-    },
-    multi(x, y) {
-        return x * y;
-    },
-    diff(x, y) {
-        return x - y;
-    },
-    div(x, y) {
-        return x / y;
-    }
-};
 
 let me = {
     getSum(x, y) {
-        return(`${x} + ${y} = ${calculator.sum.call(me, x, y)}`)
+        this.x = x;
+        this.y = y;
+        return(`${x} + ${y} = ${calculator.sum.call(this, x, y)}`)
     },
     getDiff(x, y){
-        return(`${x} - ${y} = ${calculator.diff.call(me, x, y)}`)
+        this.x = x;
+        this.y = y;
+        return(`${x} - ${y} = ${calculator.diff.call(this, x, y)}`)
     },
     getMulti(x, y){
-        return(`${x} * ${y} = ${calculator.multi.call(me, x, y)}`)
+        this.x = x;
+        this.y = y;
+        return(`${x} * ${y} = ${calculator.multi.call(this, x, y)}`)
     },
     getDiv(x, y){
-        return(`${x} / ${y} = ${calculator.div.call(me, x, y)}`)
+        this.x = x;
+        this.y = y;
+        return(`${x} / ${y} = ${calculator.div.call(this, x, y)}`)
     },
 };
 
@@ -134,7 +128,7 @@ function concat(str1, str2, symbol) {
 }
 
 function hello(who) {
-    return window.concat.bind(window, "Hello", who, ' ')();
+    return concat.bind(this, "Hello", who, ' ')();
 }
 hello('World'); // Hello World
 
@@ -153,6 +147,7 @@ console.log( cube(2) );
 
 // С помощью рекурсии: не получилось... понимаю, что куб это число умноженное на квадрат, но как-то...
 function  cube (value) {
+    x = value;
     if (value === 1) {
         return value;
     } else {
